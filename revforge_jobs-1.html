@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RevForge Global — We're Hiring</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --green: #00ff50;
+  --green-dim: rgba(0,255,80,0.15);
+  --green-border: rgba(0,255,80,0.25);
+  --white: #ffffff;
+  --gray: rgba(255,255,255,0.5);
+  --dark: rgba(255,255,255,0.06);
+}
+html { scroll-behavior: smooth; }
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── GRID BG ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(0,255,80,0.025) 60px, rgba(0,255,80,0.025) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,255,80,0.025) 60px, rgba(0,255,80,0.025) 61px);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── SCAN LINE ── */
+.scan {
+  position: fixed; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  box-shadow: 0 0 10px rgba(0,255,80,0.6);
+  animation: scanDown 5s linear infinite;
+  z-index: 1; pointer-events: none;
+}
+@keyframes scanDown { 0%{top:0;opacity:1;} 95%{opacity:0.3;} 100%{top:100vh;opacity:0;} }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top:0; z-index:100;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--green-border);
+  padding: 16px 24px;
+  display: flex; align-items:center; justify-content:space-between;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 6px;
+  color: #fff;
+}
+.nav-logo span { color: var(--green); }
+.nav-badge {
+  background: var(--green-dim);
+  border: 1px solid var(--green-border);
+  color: var(--green);
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 3px; padding: 5px 14px;
+  border-radius: 20px; text-transform: uppercase;
+  animation: badgePulse 2s ease infinite;
+}
+@keyframes badgePulse {
+  0%,100%{box-shadow:0 0 0 rgba(0,255,80,0);}
+  50%{box-shadow:0 0 15px rgba(0,255,80,0.3);}
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative; z-index:1;
+  padding: 80px 24px 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--green-border);
+}
+.hero-sup {
+  font-size: 11px; font-weight: 800; letter-spacing: 6px;
+  color: var(--green); text-transform: uppercase;
+  margin-bottom: 16px; display: flex; align-items:center; justify-content:center; gap:12px;
+}
+.hero-sup::before, .hero-sup::after {
+  content:''; width:40px; height:1px;
+  background: linear-gradient(90deg,transparent,var(--green));
+}
+.hero-sup::after { transform: scaleX(-1); }
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 12vw, 120px);
+  color: #fff; letter-spacing: 6px; line-height: 0.9;
+  margin-bottom: 16px;
+  text-shadow: 0 0 80px rgba(0,255,80,0.08);
+}
+.hero-title span { color: var(--green); text-shadow: 0 0 40px rgba(0,255,80,0.5); }
+.hero-sub {
+  font-size: clamp(14px, 2.5vw, 18px); font-weight: 600;
+  color: rgba(255,255,255,0.5); letter-spacing: 2px;
+  max-width: 600px; margin: 0 auto 32px;
+}
+.hero-stats {
+  display: flex; gap: 32px; justify-content:center; flex-wrap:wrap;
+  margin-bottom: 40px;
+}
+.stat { text-align: center; }
+.stat-n {
+  font-family: 'Bebas Neue', sans-serif; font-size: 32px;
+  color: var(--green); letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(0,255,80,0.5);
+}
+.stat-l { font-size: 9px; letter-spacing: 3px; color: var(--gray); text-transform: uppercase; }
+
+/* ── ROLE CARD ── */
+.role-section {
+  position: relative; z-index:1;
+  max-width: 800px; margin: 0 auto;
+  padding: 50px 24px;
+}
+.section-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 5px;
+  color: var(--green); text-transform: uppercase; margin-bottom: 12px;
+}
+.role-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--green-border);
+  border-radius: 8px; padding: 32px;
+  margin-bottom: 40px;
+  position: relative; overflow: hidden;
+}
+.role-card::before {
+  content: '';
+  position: absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+}
+.role-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: 4px; margin-bottom: 8px;
+}
+.role-meta {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.meta-tag {
+  background: var(--green-dim); border: 1px solid var(--green-border);
+  color: var(--green); font-size: 10px; font-weight: 800;
+  letter-spacing: 2px; padding: 4px 12px; border-radius: 20px;
+  text-transform: uppercase;
+}
+.meta-tag.white {
+  background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+}
+.salary-big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 56px);
+  color: var(--green); letter-spacing: 3px;
+  text-shadow: 0 0 30px rgba(0,255,80,0.4);
+  margin-bottom: 4px;
+}
+.salary-sub { font-size: 12px; color: var(--gray); letter-spacing: 2px; margin-bottom: 28px; }
+
+.role-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; margin-bottom: 28px;
+}
+@media(max-width:600px) { .role-grid { grid-template-columns: 1fr; } }
+
+.role-col h4 {
+  font-size: 9px; font-weight: 800; letter-spacing: 4px;
+  color: var(--green); text-transform: uppercase; margin-bottom: 12px;
+}
+.role-col ul { list-style: none; }
+.role-col ul li {
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.role-col ul li::before {
+  content: '&#x27A4;';
+  color: var(--green); font-size: 10px; margin-top: 2px; flex-shrink: 0;
+}
+
+/* ── APPLY BUTTON ── */
+.apply-btn {
+  display: inline-block;
+  background: #fff; color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px; letter-spacing: 4px;
+  padding: 14px 40px; border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #fff;
+}
+.apply-btn:hover {
+  background: transparent; color: #fff;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+/* ── PLATFORMS SECTION ── */
+.platforms-section {
+  position: relative; z-index:1;
+  padding: 50px 24px 80px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.platforms-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  letter-spacing: 5px; text-align: center;
+  margin-bottom: 8px;
+}
+.platforms-title span { color: var(--green); }
+.platforms-sub {
+  text-align: center; font-size: 13px;
+  color: var(--gray); letter-spacing: 2px; margin-bottom: 40px;
+}
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px; max-width: 1000px; margin: 0 auto;
+}
+.platform-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 18px 20px;
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none; color: #fff;
+  transition: all 0.3s ease;
+  position: relative; overflow: hidden;
+}
+.platform-card::before {
+  content: '';
+  position: absolute; left:0; top:0; bottom:0; width:3px;
+  background: var(--green);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+.platform-card:hover {
+  background: rgba(0,255,80,0.04);
+  border-color: var(--green-border);
+  transform: translateX(4px);
+}
+.platform-card:hover::before { transform: scaleY(1); }
+.platform-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; color: rgba(255,255,255,0.1);
+  letter-spacing: 2px; flex-shrink: 0; width: 36px;
+  transition: color 0.3s;
+}
+.platform-card:hover .platform-num { color: var(--green); }
+.platform-info { flex: 1; }
+.platform-name {
+  font-size: 15px; font-weight: 800; letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.platform-type {
+  font-size: 10px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase;
+}
+.platform-arrow {
+  font-size: 16px; color: rgba(255,255,255,0.2);
+  transition: color 0.3s, transform 0.3s;
+}
+.platform-card:hover .platform-arrow {
+  color: var(--green); transform: translateX(4px);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index:1;
+  text-align: center; padding: 30px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 8px;
+  color: rgba(255,255,255,0.15); margin-bottom: 8px;
+}
+.footer-logo span { color: rgba(0,255,80,0.3); }
+.footer-text { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 3px; }
+</style>
+</head>
+<body>
+
+<div class="scan"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">REV<span>FORGE</span> GLOBAL</div>
+  <div class="nav-badge">&#x25CF; Now Hiring</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-sup">Join the Army</div>
+  <h1 class="hero-title">WE'RE<br><span>HIRING</span></h1>
+  <p class="hero-sub">B2B Outbound Sales Specialist — Remote · Full-time · US & UK Market</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">40K</div><div class="stat-l">BDT Base</div></div>
+    <div class="stat"><div class="stat-n">+15%</div><div class="stat-l">Commission</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Remote</div></div>
+    <div class="stat"><div class="stat-n">US/UK</div><div class="stat-l">Market</div></div>
+  </div>
+  <a href="mailto:hellorabiulhasanworks@outlook.com" class="apply-btn">Apply Now &#x2192;</a>
+</section>
+
+<!-- ROLE DETAILS -->
+<section class="role-section">
+  <div class="section-label">Open Position</div>
+  <div class="role-card">
+    <div class="role-title">B2B Outbound Sales Specialist</div>
+    <div class="role-meta">
+      <span class="meta-tag">Remote</span>
+      <span class="meta-tag">Full-time</span>
+      <span class="meta-tag white">US & UK Market</span>
+      <span class="meta-tag white">Sales</span>
+    </div>
+    <div class="salary-big">40,000 BDT</div>
+    <div class="salary-sub">Base salary + 10-15% commission per deal closed</div>
+
+    <div class="role-grid">
+      <div class="role-col">
+        <h4>What You'll Sell</h4>
+        <ul>
+          <li><span>&#x27A4;</span> Business Websites</li>
+          <li><span>&#x27A4;</span> AI Chatbots & Automation</li>
+          <li><span>&#x27A4;</span> Custom Software Solutions</li>
+          <li><span>&#x27A4;</span> Lead Generation Services</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>What You'll Do</h4>
+        <ul>
+          <li><span>&#x27A4;</span> Cold email & LinkedIn outreach</li>
+          <li><span>&#x27A4;</span> Lead qualification & booking</li>
+          <li><span>&#x27A4;</span> Close deals & hit KPIs</li>
+          <li><span>&#x27A4;</span> CRM management</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Requirements</h4>
+        <ul>
+          <li><span>&#x27A4;</span> 1+ year sales experience</li>
+          <li><span>&#x27A4;</span> Fluent English</li>
+          <li><span>&#x27A4;</span> Self-motivated</li>
+          <li><span>&#x27A4;</span> US/UK timezone availability</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Why RevForge</h4>
+        <ul>
+          <li><span>&#x27A4;</span> 40K BDT + commission</li>
+          <li><span>&#x27A4;</span> Remote freedom</li>
+          <li><span>&#x27A4;</span> International exposure</li>
+          <li><span>&#x27A4;</span> Fast-growing AI agency</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="mailto:hellorabiulhasanworks@outlook.com" class="apply-btn">Apply &#x2192; hellorabiulhasanworks@outlook.com</a>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms-section">
+  <div class="section-label" style="text-align:center;margin-bottom:8px;">Apply On</div>
+  <h2 class="platforms-title">TOP <span>20</span> PLATFORMS</h2>
+  <p class="platforms-sub">Click any platform to apply directly</p>
+
+  <div class="platforms-grid" id="platformsGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">REV<span>FORGE</span> GLOBAL</div>
+  <div class="footer-text">We Forge Your Pipeline. You Close Deals. &#x2014; rev-forge.netlify.app</div>
+</footer>
+
+<script>
+const platforms = [
+  { name: "LinkedIn", type: "Professional Network", url: "https://www.linkedin.com/jobs/post/" },
+  { name: "Indeed", type: "Job Board", url: "https://employers.indeed.com/p/post-job" },
+  { name: "Upwork", type: "Freelance Platform", url: "https://www.upwork.com/nx/jobs/post/" },
+  { name: "Bdjobs", type: "Bangladesh #1 Job Site", url: "https://employer.bdjobs.com/postjob.asp" },
+  { name: "Glassdoor", type: "Job Board", url: "https://www.glassdoor.com/employers/post-a-job/" },
+  { name: "We Work Remotely", type: "Remote Jobs", url: "https://weworkremotely.com/post-a-job" },
+  { name: "Remote.co", type: "Remote Jobs", url: "https://remote.co/post-a-remote-job/" },
+  { name: "Jobstreet", type: "Asia Job Board", url: "https://www.jobstreet.com.bd/en/cms/employer/" },
+  { name: "Freelancer.com", type: "Freelance Platform", url: "https://www.freelancer.com/jobs/post/" },
+  { name: "Toptal", type: "Elite Talent Network", url: "https://www.toptal.com/hire" },
+  { name: "AngelList / Wellfound", type: "Startup Jobs", url: "https://wellfound.com/recruit/postings/new" },
+  { name: "Workana", type: "Latin & Global Remote", url: "https://www.workana.com/en/post-project" },
+  { name: "PeoplePerHour", type: "Freelance Platform", url: "https://www.peopleperhour.com/post-a-job" },
+  { name: "Guru.com", type: "Freelance Platform", url: "https://www.guru.com/employer/post-job.aspx" },
+  { name: "Fiverr Business", type: "Service Marketplace", url: "https://business.fiverr.com/" },
+  { name: "Remotive", type: "Remote Job Board", url: "https://remotive.com/post-a-remote-job" },
+  { name: "ZipRecruiter", type: "Top US Job Board", url: "https://www.ziprecruiter.com/post-jobs" },
+  { name: "Monster.com", type: "Global Job Board", url: "https://hiring.monster.com/post-a-job/" },
+  { name: "Hired.com", type: "Tech Sales Talent", url: "https://hired.com/employers" },
+  { name: "Greenhouse", type: "Enterprise Hiring", url: "https://www.greenhouse.io/post-a-job" },
+];
+
+const grid = document.getElementById('platformsGrid');
+platforms.forEach((p, i) => {
+  const card = document.createElement('a');
+  card.href = p.url;
+  card.target = '_blank';
+  card.className = 'platform-card';
+  card.innerHTML = `
+    <div class="platform-num">${String(i+1).padStart(2,'0')}</div>
+    <div class="platform-info">
+      <div class="platform-name">${p.name}</div>
+      <div class="platform-type">${p.type}</div>
+    </div>
+    <div class="platform-arrow">&#x2192;</div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>
